@@ -5,15 +5,12 @@ import { ItemsProps } from "../Home";
 
 const GridBox = styled(Box)(
   ({ theme }) => `
-  margin: ${theme.spacing(2, 0)};
-  padding: ${theme.spacing(4, 0)};
+  margin-top: ${theme.spacing(8)};
 `
 );
-const Title = styled(Box)(
-  ({ theme }) => `
-  text-align:center;
-`
-);
+const Title = styled(Box)`
+  text-align: center;
+`;
 
 const BoxContainer = styled(Box)(
   ({ theme }) => `

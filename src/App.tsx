@@ -5,8 +5,14 @@ import Home from "./components/Home";
 
 const BodyContainer = styled(Container)`
   background-color: #fcfcfc;
-  /* margin-top: 68px; */
-  padding: 4rem 4.5rem 4.5rem 4.5rem !important;
+  padding: 1.5rem;
+  ${({ theme }) => theme.breakpoints.up("sm")} {
+    padding: 4rem 4.5rem 4.5rem 4.5rem;
+    /* padding: 10%; */
+  }
+  ${({ theme }) => theme.breakpoints.down("xs")} {
+    padding: 4rem 4.5rem 4.5rem 4.5rem;
+  }
 `;
 function App() {
   return (

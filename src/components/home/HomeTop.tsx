@@ -3,19 +3,27 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import headerTop from "../../assets/images/unsplash.png";
 import ItemButton from "./ItemButton";
 
+interface IHomeData {
+  data: {
+    title: string;
+    desc1: string;
+    desc2: string;
+  };
+}
+
 const HeaderTopImageBox = styled(Box)(
   ({ theme }) => `
   height: 100%;
   overflow: hidden;
   & img {
     height: 100%;
-    width: auto;
+    width: 100%;
   }
   ${theme.breakpoints.up("sm")} {
-    height: auto;
-    overflow: auto;
+    height: 100%;
+    overflow: hidden;
     & img {
-      height: auto;
+      height: 100%;
       width: 100%;
     }
   }
@@ -43,14 +51,25 @@ const Description = styled(Box)(
   }
 `
 );
+const DescriptionBox = styled(Box)`
+  padding: ${({ theme }) => theme.spacing(3)};
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    padding: ${({ theme }) => theme.spacing(3, 0, 0, 0)};
+  }
+`;
+const ButtonWrap = styled(Box)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    text-align: center;
+  }
+`;
 
-const HomeTop = () => {
+const HomeTop = ({ data }: IHomeData) => {
   return (
     <Grid container spacing={0}>
       <TitleContainer container>
         <Grid item xs={12}>
           <Typography variant="h4" fontWeight="bold">
-            Rocks and hard places
+            {data.title}
           </Typography>
         </Grid>
       </TitleContainer>
@@ -61,25 +80,15 @@ const HomeTop = () => {
           </HeaderTopImageBox>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Box p={2}>
+          <DescriptionBox>
             <Description>
-              <Typography variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </Typography>
-              <Typography variant="body2">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </Typography>
+              <Typography variant="body2">{data.desc1}</Typography>
+              <Typography variant="body2">{data.desc2}</Typography>
             </Description>
-            <Box mt={2}>
+            <ButtonWrap mt={2}>
               <ItemButton text="LEARN ABOUT ROCKS" />
-            </Box>
-          </Box>
+            </ButtonWrap>
+          </DescriptionBox>
         </Grid>
       </Grid>
     </Grid>

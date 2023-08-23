@@ -2,14 +2,17 @@ import { Box, Button, Grid, styled, Typography } from "@mui/material";
 
 const ImageGalleryList = styled(Box)(
   ({ theme }) => `
-  padding: ${theme.spacing(4, 0)};
+  margin-top: ${theme.spacing(8)};
     `
 );
 
 const BoxContainer = styled(Box)`
   margin: 0 auto;
-  max-width: 80%;
   width: 100%;
+  max-width: 80%;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    max-width: 100%;
+  }
 `;
 const ContainerInner = styled(Box)`
   background-color: #d9d9d9;
@@ -18,13 +21,20 @@ const ContainerInner = styled(Box)`
 const ContentBox = styled(Box)`
   height: 100%;
   padding: ${({ theme }) => theme.spacing(3)};
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding: ${({ theme }) => theme.spacing(3, 1.5)};
+  }
 `;
 
 const ImageField = styled("img")`
   height: 100%;
   width: 100%;
 `;
-
+const ButtonWrap = styled(Box)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    text-align: center;
+  }
+`;
 const ItemButton = styled(Button)(
   ({ theme }) => `
   background-color: #a2a2a2;
@@ -61,9 +71,9 @@ const ImageItems = ({ imageData }: any) => {
                     {imageData.description}
                   </Typography>
                 </Box>
-                <Box>
+                <ButtonWrap>
                   <ItemButton>{imageData.buttonText}</ItemButton>
-                </Box>
+                </ButtonWrap>
               </ContentBox>
             </Grid>
           </Grid>

@@ -31,13 +31,11 @@ const ImageInner = styled(Box)(
 `
 );
 
-const DescriptionBox = styled(Box)(
-  ({ theme }) => `
+const DescriptionBox = styled(Box)`
   background-color: #d9d9d9;
   height: calc(100% - 4rem);
   position: relative;
-`
-);
+`;
 const InnerWrap = styled(Box)(
   ({ theme }) => `
   position: absolute;
@@ -69,7 +67,7 @@ const BoxItem = ({
         </ImageBox>
       ) : (
         <DescriptionBox>
-          <InnerWrap>
+          <InnerWrap p={2}>
             <Typography variant="h4">{description}</Typography>
           </InnerWrap>
         </DescriptionBox>
